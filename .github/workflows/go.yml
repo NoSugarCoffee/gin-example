@@ -33,10 +33,19 @@ jobs:
       run: go test -v ./...
     - name: add a file
       run: echo "aa" > a.txt
-  
+    - name: upload file
+      uses: actions/upload-artifact@v3
+      with:
+        name: gen_file
+        path: a.txt
+        
   test:
     needs: build
     runs-on: ubuntu-latest
     steps:
        - name: get a file
          run: cat a.txt
+       - name: Download a single artifact
+         uses: actions/download-artifact@v3
+         with:
+           name: gen_file
