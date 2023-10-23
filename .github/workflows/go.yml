@@ -43,9 +43,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-       - name: get a file
-         run: cat a.txt
        - name: Download a single artifact
          uses: actions/download-artifact@v3
          with:
            name: gen_file
+       - name: get a file
+         run: cat a.txt
