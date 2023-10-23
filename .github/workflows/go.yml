@@ -31,3 +31,11 @@ jobs:
       run: go build -v ./...
     - name: Test
       run: go test -v ./...
+    - name: add a file
+      run: echo "aa" > a.txt
+  
+  test:
+    runs-on: ubuntu-latest
+    steps:
+       - name: get a file
+         run: cat a.txt
